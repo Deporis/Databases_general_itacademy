@@ -2,23 +2,26 @@ DROP DATABASE SOCIAL_NETWORK;
 CREATE DATABASE SOCIAL_NETWORK;
 USE SOCIAL_NETWORK;
 CREATE TABLE user_sn
-	(user_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    email VARCHAR(45) UNIQUE NOT NULL,
-    password VARCHAR(45) NOT NULL);
+	(user_id 	INT PRIMARY KEY AUTO_INCREMENT,
+    name 	VARCHAR(45) NOT NULL,
+    email 	VARCHAR(45) UNIQUE NOT NULL,
+    password 	VARCHAR(45) NOT NULL);
 CREATE TABLE relationship
-	(user_id1 INT,
-    user_id2 INT, 
-    how_tm VARCHAR(280) NOT NULL,
+	(user_id1 	INT,
+    user_id2 	INT, 
+    how_tm 	VARCHAR(280) NOT NULL,
+    
     PRIMARY KEY (user_id1, user_id2),
+    
     FOREIGN KEY (user_id1) REFERENCES user_sn (user_id),
+    
     FOREIGN KEY (user_id2) REFERENCES user_sn (user_id)
     );
 CREATE TABLE photo_url
-	(photo_id INT PRIMARY KEY AUTO_INCREMENT,
-    URL VARCHAR(145) UNIQUE NOT NULL,
-    place VARCHAR(45) NOT NULL,
-    user_id_ph INT UNIQUE NOT NULL REFERENCES user_sn (user_id)
+	(photo_id 	INT PRIMARY KEY AUTO_INCREMENT,
+    URL 	VARCHAR(145) UNIQUE NOT NULL,
+    place 	VARCHAR(45) NOT NULL,
+    user_id_ph 	INT UNIQUE NOT NULL REFERENCES user_sn (user_id)
     );
 INSERT INTO user_sn (name, email, password)
 VALUES ("Alfred", "alfred.inga.rios@gmail.com", "alfred1234"),
